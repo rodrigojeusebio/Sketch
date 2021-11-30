@@ -29,3 +29,8 @@ body{
 .box{
     background-color: rgba(0, 0, 0, .1);
 }
+
+button{
+    height: 30px;
+    margin: 10px;
+}
