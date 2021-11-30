@@ -2,7 +2,7 @@ const container = document.querySelector('.container')
 const buttons = document.querySelectorAll('button')
 
 const black = "#190707";
-const background_Color = "rgba(0, 0, 0, .1)";
+const background_Color = "rgba(255, 255, 255, 0.747)";
 let main_color = black;
 let random = false
 
@@ -48,9 +48,15 @@ buttons.forEach(button => {
             random = true;
         }else if (button.classList.value == "new_grid"){
             let val = parseInt(prompt("grid size"));
-            keep = false
-            clearDivs()
-            creatDivs(val)
+            console.log(val)
+            if (val > 100 || val < 1 || val === NaN){
+                clearDivs()
+                creatDivs(16)
+            } else{
+                clearDivs()
+                creatDivs(val)
+            }
+            
         }
     })
 });
