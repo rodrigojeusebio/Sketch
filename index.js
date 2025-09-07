@@ -102,13 +102,35 @@ class Canvas {
                     }
                 }
                 else if (button.id == "download") {
-                    html2canvas(this.container).then(canvas => {
-                        // Convert canvas to data URL
-                        const link = document.createElement("a");
-                        link.download = "image.png";
-                        link.href = canvas.toDataURL("image/png");
-                        link.click();
+                    const boxes = container.querySelectorAll(".box");
+
+                    // Get grid size
+                    const styles = getComputedStyle(this.container);
+                    const cols = styles.gridTemplateColumns.split(" ").length;
+                    const rows = styles.gridTemplateRows.split(" ").length;
+
+                    const cellWidth = boxes[0].offsetWidth;
+                    const cellHeight = boxes[0].offsetHeight;
+
+                    // Build SVG string
+                    let svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${cols * cellWidth}" height="${rows * cellHeight}">`;
+
+                    boxes.forEach((pixel, i) => {
+                        const color = getComputedStyle(pixel).backgroundColor;
+                        const x = (i % cols) * cellWidth;
+                        const y = Math.floor(i / cols) * cellHeight;
+
+                        svg += `<rect x="${x}" y="${y}" width="${cellWidth}" height="${cellHeight}" fill="${color}" />`;
                     });
+
+                    svg += `</svg>`;
+
+                    // Download SVG
+                    const blob = new Blob([svg], { type: "image/svg+xml" });
+                    const link = document.createElement("a");
+                    link.href = URL.createObjectURL(blob);
+                    link.download = "my_sketch.svg";
+                    link.click();
                 }
             })
         });
