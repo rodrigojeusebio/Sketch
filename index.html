@@ -6,6 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sketch</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="index.js" defer></script>
 </head>
@@ -13,21 +17,22 @@
 <body>
     <div class="header">Welcome to Etch-a-Sketch</div>
     <div class="center">
-        <div class="grid_buttons">
-            <button class="new_grid">New Grid</button>
-            <button class="clear">Clear Grid</button>
+        <div class="grid-configuration">
+            <p>Grid config.</p>
+            <div class="grid_buttons">
+                <button class="new_grid">New Grid</button>
+                <button class="clear">Clear Grid</button>
+            </div>
         </div>
         <div class="container" ondragstart="return false;" ondrop="return false;"></div>
-        <div class="emptyspace">
-            <div style="padding: 55px;"></div>
+        <div class="grid-configuration">
+            <p>Paint config.</p>
+            <div class="grid_buttons">
+                <button class="black">Black</button>
+                <button class="random_col">Rainbow</button>
+                <button class="eraser">Eraser</button>
+            </div>
         </div>
-    </div>
-
-    <div class="buttons">
-        <button class="black">Black</button>
-        <button class="random_col">Rainbow</button>
-        <button class="eraser">Eraser</button>
-
     </div>
 </body>
 
