@@ -47,10 +47,13 @@ class Canvas {
         let button = document.querySelector(`#${buttonIdentifier}`);
         button.style.backgroundColor = '#8ea7a5ff';
         button.style.borderColor = '#8ea7a5ff';
+        this.cleanButtonSettingSelection(button);
+    }
 
+    cleanButtonSettingSelection(button = false) {
         let buttons = document.querySelectorAll('.options')
         buttons.forEach((buttonOption) => {
-            if (button == buttonOption) {
+            if (button && button == buttonOption) {
                 return;
             }
             buttonOption.style.backgroundColor = '';
@@ -64,8 +67,8 @@ class Canvas {
     }
 
     setBlack() {
-        this.mainColor = BLACK;
         this.randomColor = false;
+        this.mainColor = BLACK;
         this.colorActiveButton('black')
     }
 
@@ -80,7 +83,16 @@ class Canvas {
         });
     }
 
+    setSpecificColor() {
+        this.mainColor = document.querySelector('#specificColor').value
+        this.randomColor = false;
+        this.colorActiveButton('specificColorButton')
+    }
+
     initEventListener() {
+        document.querySelector('input').addEventListener('blur', () => {
+            this.setSpecificColor();
+        });
         this.buttons.forEach(button => {
             button.addEventListener("click", () => {
                 if (button.id == "clear") {
@@ -89,6 +101,8 @@ class Canvas {
                     this.setEraser()
                 } else if (button.id == "black") {
                     this.setBlack()
+                } else if (button.id == "specificColorButton") {
+                    this.setSpecificColor()
                 } else if (button.id == "randomColor") {
                     this.setRandomColor()
                 } else if (button.id == "new_grid") {
@@ -145,7 +159,6 @@ canvas.initEventListener();
 
 window.onmousedown = () => {
     canvas.mouseDown = true;
-    console.log(canvas.mouseDown)
 }
 
 window.onmouseup = () => {
