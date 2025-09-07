@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
     <link rel="stylesheet" href="style.css">
     <script src="index.js" defer></script>
 </head>
@@ -22,13 +23,14 @@
             <div class="grid_buttons">
                 <button id="new_grid">New Grid</button>
                 <button id="clear">Clear Grid</button>
+                <button id="download">Download</button>
             </div>
         </div>
         <div class="container" ondragstart="return false;" ondrop="return false;"></div>
         <div class="grid-configuration">
             <p>Paint config.</p>
             <div class="grid_buttons">
-                <button id="black" class="options" >Black</button>
+                <button id="black" class="options">Black</button>
                 <button id="randomColor" class="options">Rainbow</button>
                 <button id="eraser" class="options ">Eraser</button>
             </div>

@@ -5,7 +5,7 @@ randomColoror = () => Math.floor(Math.random() * 256);
 class Canvas {
     mouseDown;
     randomColor = false;
-    backgroundColor = "rgba(255, 255, 255, 0.747)";
+    backgroundColor = "rgba(255, 255, 255, 1)";
     mainColor = BLACK;
     boxes;
 
@@ -46,6 +46,7 @@ class Canvas {
     colorActiveButton(buttonIdentifier) {
         let button = document.querySelector(`#${buttonIdentifier}`);
         button.style.backgroundColor = '#8ea7a5ff';
+        button.style.borderColor = '#8ea7a5ff';
 
         let buttons = document.querySelectorAll('.options')
         buttons.forEach((buttonOption) => {
@@ -99,6 +100,15 @@ class Canvas {
                         this.clearDivs()
                         this.creatDivs(val)
                     }
+                }
+                else if (button.id == "download") {
+                    html2canvas(this.container).then(canvas => {
+                        // Convert canvas to data URL
+                        const link = document.createElement("a");
+                        link.download = "image.png";
+                        link.href = canvas.toDataURL("image/png");
+                        link.click();
+                    });
                 }
             })
         });
