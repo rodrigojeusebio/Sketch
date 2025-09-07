@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,24 +9,26 @@
     <link rel="stylesheet" href="style.css">
     <script src="index.js" defer></script>
 </head>
+
 <body>
     <div class="header">Welcome to Etch-a-Sketch</div>
-    <div class = "center">
+    <div class="center">
         <div class="grid_buttons">
             <button class="new_grid">New Grid</button>
             <button class="clear">Clear Grid</button>
         </div>
-        <div class="container"></div>
+        <div class="container" ondragstart="return false;" ondrop="return false;"></div>
         <div class="emptyspace">
             <div style="padding: 55px;"></div>
         </div>
     </div>
-    
+
     <div class="buttons">
         <button class="black">Black</button>
         <button class="random_col">Rainbow</button>
         <button class="eraser">Eraser</button>
-        
+
     </div>
 </body>
+
 </html>
